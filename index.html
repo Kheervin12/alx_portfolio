@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Bigg Buddy</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" 
+		integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" 
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+	<header>
+		<div id="stars"></div>
+		<nav class="navbar">
+			<a href="index.html"><img src="images/logo.png" alt=""></a>
+			<div class="center-nav">
+				<a href="">Home</a>
+				<a href="#about">About</a>
+				<a href="menu.html">Menu</a>
+				<a href="signin.html">Sign in</a>
+				<a href="#">Place Order</a>
+			</div>
+			<div class="social">
+				<a href=""><i class="fa-solid fa-magnifying-glass"></i></a>
+				<a href="menu.html"><i class="fa-solid fa-cart-plus"></i></a>
+				<a href="/"><i class="fa-solid fa-house"></i></a>
+			</div>
+		</nav>
+		</header>           
+
+		<main>
+			<section class="header-section">
+				<div class="text">
+					<div class="text-items">
+						<h1>Bigg Buddy</h1>
+					  <h2>Snacks and smoothie</h2>
+						<p>
+							Get a taste of the juiciest tasty snacks and healthy delicious smoothies. Grab yours now and give your tastebuds a long-lasting buddy.
+						</p>
+						<div class="actions">
+							<a href="menu.html" class="btn">Order Now</a>
+							<a href="#about" class="btn">View more</a>
+						</div>
+					</div>
+					<div class="snack-toggle">
+						<img src="images/Flying Burger PNG Image - 2084x2084.png" alt="">
+					</div>
+				 </div>
+		
+				 <div class="snacks">
+					<img src="images/Burger.png" alt="">
+					<img src="images/chicken.png" alt="">
+					<img src="images/Shawarma.png" alt="">
+					<img src="images/catfish.png" alt="">
+					<img src="images/smoothie.png" alt="">
+				 </div>
+			</section>
+
+			<section id="about">
+				<div class="about">
+					<img src="images/Serve.png" alt="">
+					<div class="about-text">
+						<h1>About</h1>
+						<p>At Bigg Buddy, we believe that great food brings people together. That's why we offer a mouth-watering selection of snacks that are perfect for every occasion. Whether you're craving juicy barbeque chicken, delicious shawarma, succulent burgers, or flavorful barbeque fish, we’ve got something for everyone. And to top it all off, our freshly made smoothies are the perfect refreshing treat to complement any meal!
+							<br>
+							Our commitment to quality is what sets us apart. Every item on our menu is prepared with the freshest ingredients and cooked to perfection. Whether you're grabbing a quick bite on the go or sharing a meal with friends, Bigg Buddy guarantees satisfaction with every bite.
+							<br>
+							Come visit Bigg Buddy today for a snack experience like no other. Because at Bigg Buddy, we don’t just serve food, we serve happiness!
+						</p>
+					</div>
+				</div>
+			</section>
+		</main>
+
+	<script>
+		const burgerImages = document.querySelectorAll('.snacks img');
+		const toggleImages = document.querySelectorAll('.snack-toggle img');
+		let currentIndex = 0;
+
+		toggleImages[currentIndex].classList.add('active');
+
+		burgerImages.forEach((img, index) => {
+			img.addEventListener('click', () => {
+				toggleImages.forEach(toggleImg => toggleImg.classList.remove('active'));
+				toggleImages[currentIndex].classList.add('active');
+				toggleImages[currentIndex].src = burgerImages[index].src;
+				currentIndex = (currentIndex + 1) % toggleImages.length;
+			});
+		});
+
+		function createStars() {
+			const starsContainer = document.getElementById('stars');
+			const windowWidth = window.innerWidth;
+			const windowHeight = window.innerHeight;
+
+			for (let i = 0; i < 100; i++) {
+				const star = document.createElement('div');
+				star.className = 'star';
+				star.style.left = `${Math.random() * windowWidth}px`;
+				star.style.top = `${Math.random() * windowHeight}px`;
+				starsContainer.appendChild(star);
+			}
+	}
+
+		window.addEventListener('load', createStars);
+	</script>
+</body>
+
+</html>
